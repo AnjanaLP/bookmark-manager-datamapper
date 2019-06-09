@@ -1,3 +1,4 @@
+ENV["RACK_ENV"] = "test"
 require './app/app'
 require 'capybara'
 require 'capybara/rspec'
@@ -36,7 +37,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
