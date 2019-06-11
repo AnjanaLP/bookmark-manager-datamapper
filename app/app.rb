@@ -20,8 +20,8 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks' do
     bookmark = Bookmark.create(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:tags])
-    bookmark.tags << tag
+    tags = params[:tags].split(", ")
+    tags.each { |tag| bookmark.tags << Tag.first_or_create(name: tag) }
     bookmark.save
     redirect '/bookmarks'
   end
