@@ -20,10 +20,16 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks' do
     bookmark = Bookmark.create(url: params[:url], title: params[:title])
-    tag = Tag.first_or_create(name: params[:name])
+    tag = Tag.first_or_create(name: params[:tags])
     bookmark.tags << tag
     bookmark.save
     redirect '/bookmarks'
+  end
+
+  get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @bookmarks = tag ? tag.bookmarks : []
+    erb :'bookmarks/index'
   end
 
   run! if app_file == $0
