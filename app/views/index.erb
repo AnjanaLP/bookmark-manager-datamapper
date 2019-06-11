@@ -1,1 +1,12 @@
 <h1>Welcome to Bookmark Manager!</h1>
+
+<% unless current_user %>
+  <form action="/users/new" method="get">
+    <input type="submit" value="Signup">
+  </form>
+<% end %>
+
+
+<form action="/bookmarks" method="get">
+  <input type="submit" value="View bookmarks">
+</form>
