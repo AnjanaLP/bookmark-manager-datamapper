@@ -79,6 +79,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rake (12.3.2)
     regexp_parser (1.5.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -112,6 +113,7 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
+  rake
   rspec
   sinatra
 
