@@ -5,7 +5,7 @@ feature 'Viewing bookmarks' do
     visit '/bookmarks'
     expect(page.status_code).to eq 200
 
-    within 'ul.bookmarks' do
+    within 'ul.bookmark' do
       expect(page).to have_link("Google", href: "http://www.google.co.uk")
     end
   end

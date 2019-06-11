@@ -1,9 +1,17 @@
-<ul class="bookmarks">
+<ul class="bookmark">
   <% @bookmarks.each do |bookmark| %>
     <li>
       <a href="<%= bookmark.url %>">
         <%= bookmark.title %>
       </a>
+      <% if bookmark.tags.any? %>
+        Tags:
+        <ul>
+        <% bookmark.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
+        </ul>
+      <% end %>
     </li>
   <% end %>
 </ul>
