@@ -5,8 +5,12 @@
     <title>Bookmark Manager</title>
   </head>
   <body>
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
+    <% if flash[:errors] && !flash[:errors].empty? %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
     <% end %>
     <% if current_user %>
       Hello, <%= current_user.email %>
