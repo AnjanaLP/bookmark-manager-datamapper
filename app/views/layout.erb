@@ -5,6 +5,9 @@
     <title>Bookmark Manager</title>
   </head>
   <body>
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
     <% if current_user %>
       Hello, <%= current_user.email %>
     <% end %>
