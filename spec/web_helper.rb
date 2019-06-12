@@ -5,3 +5,10 @@ def signup(email: "anjana@example.com", password: "password123", password_confir
   fill_in "Password Confirmation", with: password_confirmation
   click_button "Signup"
 end
+
+def sign_in(email:, password:)
+  visit '/sessions/new'
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button 'Sign in'
+end
