@@ -5,7 +5,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 
 class BookmarkManager < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_override
   set :session_secret, 'super secret'
   register Sinatra::Flash
 
@@ -73,7 +73,13 @@ class BookmarkManager < Sinatra::Base
       flash.now[:errors] = ['The email or password is incorrect']
       erb :'sessions/new'
     end
-end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = "You have succesfully signed out"
+    redirect '/bookmarks'
+  end
 
   run! if app_file == $0
 end
